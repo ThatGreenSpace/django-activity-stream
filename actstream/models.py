@@ -151,10 +151,16 @@ class Action(models.Model):
         return 'actstream.views.detail', [self.pk]
 
     def get_action_note(self):
-        """
-        Returns model's action note based on verb
-        """
-        return self.target.get_action_note(actor=self.actor, verb=self.verb, action_object=self.action_object)
+        return self.target.get_action_note(actor=self.actor, verb=self.verb,
+                                           action_object=self.action_object, data=self.data)
+
+    def get_target_action_note(self):
+        return self.target.get_target_action_note(actor=self.actor, verb=self.verb,
+                                                  action_object=self.action_object, data=self.data)
+
+    def get_action_object_action_note(self):
+        return self.target.get_action_object_action_note(actor=self.actor, verb=self.verb,
+                                                         action_object=self.action_object, data=self.data)
 
 # convenient accessors
 actor_stream = Action.objects.actor
