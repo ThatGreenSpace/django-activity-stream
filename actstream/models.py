@@ -150,6 +150,11 @@ class Action(models.Model):
     def get_absolute_url(self):
         return 'actstream.views.detail', [self.pk]
 
+    def get_action_note(self):
+        """
+        Returns model's action note based on verb
+        """
+        return self.target.get_action_note(actor=self.actor, verb=self.verb, action_object=self.action_object)
 
 # convenient accessors
 actor_stream = Action.objects.actor
