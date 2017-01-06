@@ -97,6 +97,8 @@ class Action(models.Model):
 
     public = models.BooleanField(default=True, db_index=True)
 
+    estate = models.PositiveSmallIntegerField(blank=True, null=True, db_index=True)
+
     objects = actstream_settings.get_action_manager()
 
     class Meta:
@@ -157,6 +159,7 @@ action_object_stream = Action.objects.action_object
 target_stream = Action.objects.target
 user_stream = Action.objects.user
 model_stream = Action.objects.model_actions
+estate_model_stream = Action.objects.estate_model_actions
 any_stream = Action.objects.any
 followers = Follow.objects.followers
 following = Follow.objects.following

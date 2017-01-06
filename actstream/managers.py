@@ -128,6 +128,14 @@ class ActionManager(GFKManager):
             )
         return qs.filter(q, **kwargs)
 
+    @stream
+    def estate_model_actions(self, model, estate, **kwargs):
+        """
+        Stream of most recent actions by any particular model for a particular estate
+        """
+        queryset = self.model_actions(model, **kwargs)
+        return queryset.filter(estate=estate)
+
 
 class FollowManager(GFKManager):
     """
