@@ -99,6 +99,8 @@ class Action(models.Model):
 
     estate = models.PositiveSmallIntegerField(blank=True, null=True, db_index=True)
 
+    system_admin = models.BooleanField(default=False, db_index=True)
+
     objects = actstream_settings.get_action_manager()
 
     class Meta:

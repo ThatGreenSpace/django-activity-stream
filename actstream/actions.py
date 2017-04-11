@@ -102,7 +102,8 @@ def action_handler(verb, **kwargs):
         public=bool(kwargs.pop('public', True)),
         description=kwargs.pop('description', None),
         timestamp=kwargs.pop('timestamp', now()),
-        estate=kwargs.pop('estate', None)
+        estate=kwargs.pop('estate', None),
+        system_admin=kwargs.pop('system_admin', False)
     )
 
     for opt in ('target', 'action_object'):
